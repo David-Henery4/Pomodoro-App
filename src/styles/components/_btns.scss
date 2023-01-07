@@ -1,0 +1,25 @@
+.primary-btn{
+  // width: 140px;
+  // height: 53px;
+  border-radius: 26.5px;
+  background-color: #F87070;
+  position: relative;
+}
+.primary-btn:hover::after{
+  content: "";
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 26.5px;
+  background-color: rgba(#ffffff, .2);
+}
+.primary-btn:active{
+  background-color: #F87070;
+  color: #ffffff;
+}
+.primary-btn:active::after{
+  display: none;
+}
