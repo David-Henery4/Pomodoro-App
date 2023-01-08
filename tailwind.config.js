@@ -12,6 +12,7 @@ module.exports = {
       lightGrey: "#EFF1FA",
       darkBlue: "#161932",
       lighterBlue: "#1E213F",
+      lineGrey: "#E3E1E1",
       timerBaseColourOne: "#2E325A",
       timerBaseColourTwo: "#0E112A",
     },
