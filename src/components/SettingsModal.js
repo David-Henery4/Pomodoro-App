@@ -10,7 +10,7 @@ const SettingsModal = ({ isSettingsModalOpen, setIsSettingsModalOpen }) => {
   return (
     <div className={`max-w-[540px] rounded-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-darkBlue bg-baseWhite w-11/12 ${isSettingsModalOpen ? "block": "hidden"}`}>
       <ModalHeader setIsSettingsModalOpen={setIsSettingsModalOpen}/>
-      <section className="w-full px-6 pt-6">
+      <section className="w-full px-6 pt-6 smlTab:px-10">
         {/* TIME */}
         <TimeSettings />
         {/* FONT */}

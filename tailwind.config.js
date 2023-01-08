@@ -35,6 +35,9 @@ module.exports = {
         thirdHeading: "15px",
         fouthHeading: "5px",
       },
+      screens: {
+        smlTab: "39.37em",
+      },
     },
   },
   plugins: [],

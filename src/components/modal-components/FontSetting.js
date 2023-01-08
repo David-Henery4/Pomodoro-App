@@ -2,7 +2,7 @@ import React from 'react'
 
 export const FontSetting = () => {
   return (
-    <div className="w-full py-6 text-center flex flex-col justify-center items-center gap-[18px] border-b border-b-lineGrey">
+    <div className="w-full py-6 text-center flex flex-col justify-center items-center gap-[18px] border-b border-b-lineGrey smlTab:flex-row smlTab:justify-between">
       <h4 className="tracking-fouthHeading uppercase text-[11px]">font</h4>
       <div className="w-[152px] flex justify-center items-center gap-4">
         <div className="bg-darkBlue font-kumbh rounded-full w-10 h-10 text-baseWhite grid place-items-center">

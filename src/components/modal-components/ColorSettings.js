@@ -3,7 +3,7 @@ import { TickIcon } from '../../assets';
 
 const ColorSettings = () => {
   return (
-    <div className="w-full pt-6 pb-[6px] text-center flex flex-col justify-center items-center gap-[18px]">
+    <div className="w-full pt-6 pb-[6px] text-center flex flex-col justify-center items-center gap-[18px] smlTab:flex-row smlTab:justify-between">
       <h4 className="tracking-fouthHeading uppercase text-[11px]">color</h4>
       <div className="w-[152px] flex justify-center items-center gap-4">
         <div className="bg-primaryRed w-10 h-10 grid place-items-center font-kumbh rounded-full">
