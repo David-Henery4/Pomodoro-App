@@ -3,12 +3,12 @@ import { useGlobalContext } from "./hooks/Context";
 import {StateSelection, Timer, SettingsBtn, SettingsModal} from "./components"
 
 function App() {
-  const {activeFont, activeFontNumber} = useGlobalContext()
+  const {activeFont} = useGlobalContext()
   // const [activeFont, setActiveFont] = useState(["kumbh", "slab", "space"]);
   const [isSettingsModalOpen,setIsSettingsModalOpen] = useState(false)
   //
   return (
-    <div className={`App font-${activeFont[activeFontNumber]} font-bold text-darkGrey w-full h-screen bg-lighterBlue`}>
+    <div className={`App font-${activeFont} font-bold text-darkGrey w-full h-screen bg-lighterBlue`}>
       <SettingsModal isSettingsModalOpen={isSettingsModalOpen} setIsSettingsModalOpen={setIsSettingsModalOpen}/>
       <main className="w-full flex flex-col items-center pt-8 gap-[39px]">
         <h1 className="text-2xl">pomodoro</h1>
