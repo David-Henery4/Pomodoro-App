@@ -3,7 +3,7 @@ import { useGlobalContext } from '../../hooks/Context';
 import {fontData, handleFontChange} from '../../settings-data/fontData';
 
 export const FontSetting = () => {
-  const { setActiveFont } = useGlobalContext();
+  const { setActiveFont, setNewFont } = useGlobalContext();
   //
   return (
     <div className="w-full py-6 text-center flex flex-col justify-center items-center gap-[18px] border-b border-b-lineGrey smlTab:flex-row smlTab:justify-between">
@@ -20,7 +20,7 @@ export const FontSetting = () => {
               } rounded-full w-10 h-10  grid place-items-center hover:cursor-pointer`}
               onClick={() => {
                 handleFontChange(font.id);
-                setActiveFont(font.fontName);
+                setNewFont(font.fontName);
               }}
             >
               <p>Aa</p>
