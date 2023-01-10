@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useGlobalContext } from "./hooks/Context";
-import {StateSelection, Timer, SettingsBtn, SettingsModal} from "./components"
+import {StateSelection, Timer, SettingsBtn, SettingsModal, Overlay} from "./components"
 
 function App() {
   const {activeFont, handleApplyChanges} = useGlobalContext()
@@ -9,6 +9,7 @@ function App() {
   //
   return (
     <div className={`App font-${activeFont} font-bold text-darkGrey w-full h-screen bg-lighterBlue`}>
+      <Overlay isSettingsModalOpen={isSettingsModalOpen} setIsSettingsModalOpen={setIsSettingsModalOpen}/>
       <SettingsModal isSettingsModalOpen={isSettingsModalOpen} setIsSettingsModalOpen={setIsSettingsModalOpen}/>
       <main className="w-full flex flex-col items-center pt-8 gap-[39px]">
         <h1 className="text-2xl">pomodoro</h1>

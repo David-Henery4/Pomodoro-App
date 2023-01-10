@@ -15,6 +15,7 @@ module.exports = {
       lineGrey: "#E3E1E1",
       timerBaseColourOne: "#2E325A",
       timerBaseColourTwo: "#0E112A",
+      overlayColor: "#0A0C1C",
     },
     fontFamily: {
       kumbh: "Kumbh Sans, sans-serif",
