@@ -21,7 +21,10 @@ const SettingsModal = ({ isSettingsModalOpen, setIsSettingsModalOpen }) => {
         {/* COLOUR */}
         <ColorSettings />
       </section>
-      <button className="primary-btn w-[140px] h-[53px] relative left-1/2 -translate-x-1/2 -bottom-[26.5px] text-baseWhite" onClick={setNewSettings}>
+      <button className="primary-btn w-[140px] h-[53px] relative left-1/2 -translate-x-1/2 -bottom-[26.5px] text-baseWhite" onClick={() => {
+        setNewSettings()
+        setIsSettingsModalOpen(false)
+      }}>
         Apply
       </button>
     </div>
