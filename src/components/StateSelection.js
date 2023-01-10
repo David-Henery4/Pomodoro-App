@@ -1,5 +1,4 @@
 import React from 'react'
-// import {handleSelectingActiveMode,modeData} from "../mode-data/modeData";
 import { useGlobalContext } from '../hooks/Context';
 
 const StateSelection = () => {

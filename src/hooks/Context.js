@@ -1,21 +1,27 @@
 import { useState, useContext, createContext } from "react";
-import { modeData, handleSelectingActiveMode } from "../mode-data/modeData";
+import { modeData } from "../mode-data/modeData";
 
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [mode, setMode] = useState(modeData);
+  //
   const [activeFont, setActiveFont] = useState("kumbh");
   const [newFont, setNewFont] = useState("");
+  //
   const [activeTheme, setActiveTheme] = useState("Red");
   const [newTheme, setNewTheme] = useState("");
   //
   const handleChangeMode = (id) => {
     const newModeData = modeData.map((mode) => {
       mode.id === id ? (mode.isModeActive = true) : (mode.isModeActive = false);
-      return mode
+      return mode;
     });
-    setMode(newModeData)
+    setMode(newModeData);
+  };
+  //
+  const resetWhenNotConfirmed = () => {
+    
   };
   //
   const setNewSettings = () => {

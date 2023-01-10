@@ -15,6 +15,7 @@ const ColorSettings = () => {
               key={color.id}
               className={`hover:cursor-pointer bg-primary${color.name} w-10 h-10 grid place-items-center font-kumbh rounded-full`}
               onClick={() => {
+                console.log(colorData)
                 handleSelectingActiveTheme(color.id)
                 setNewTheme(color.name)
               }}

@@ -16,11 +16,10 @@ const modeData = [
   },
 ];
 
-const handleSelectingActiveMode = (id) => {
-  modeData.forEach(mode => mode.id === id ? mode.isModeActive = true: mode.isModeActive = false)
-}
+// const handleSelectingActiveMode = (id) => {
+//   modeData.forEach(mode => mode.id === id ? mode.isModeActive = true: mode.isModeActive = false)
+// }
 
 export{
   modeData,
-  handleSelectingActiveMode,
 }
