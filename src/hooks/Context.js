@@ -7,7 +7,13 @@ import updateData from "../functions/changeFunction";
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [] = useState()
+  const [activeMode, setActiveMode] = useState({
+    id: 1,
+    mode: "pomodoro",
+    isActive: true,
+    timerMins: 1,
+    timerSecs: 0,
+  });
   //
   const [mode, setMode] = useState(modeData);
   const [themeData,setThemeData] = useState(colorData)
@@ -22,6 +28,7 @@ const AppProvider = ({ children }) => {
   const handleChangeMode = (id) => {
     const newModeData = updateData(id,modeData)
     setMode(newModeData);
+    setActiveMode(modeData.find(item => item.id === id))
   };
   //
   const handleChangeColor= (id) => {
@@ -44,6 +51,22 @@ const AppProvider = ({ children }) => {
     setActiveFont(newFont);
     setActiveTheme(newTheme);
   };
+  //
+  const handleMinsChange = (id) => {
+    const updatedTimerData = modeData.map(item => {
+      if (item.id === id){
+        item.timerMins = item.timerMins - 1
+      }
+      return item;
+    })
+    setMode(updatedTimerData);
+    setActiveMode(updatedTimerData.find((item) => item.id === id));
+  }
+  //
+  const handleTimerEnd = (id) => {
+    setActiveMode(modeData.find(item => item.id === id).timerMins = 0)
+  }
+  //
   return (
     <AppContext.Provider
       value={{
@@ -60,7 +83,10 @@ const AppProvider = ({ children }) => {
         themeData,
         resetWhenNotConfirmed,
         handleChangeFont,
-        font
+        font,
+        activeMode,
+        handleMinsChange,
+        handleTimerEnd
       }}
     >
       {children}
