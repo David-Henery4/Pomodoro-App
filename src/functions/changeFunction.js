@@ -1,24 +1,9 @@
-export const updateThemeData = (id, data) => {
-  return data.map((color) => {
-    color.id === id
-      ? (color.isActiveTheme = true)
-      : (color.isActiveTheme = false);
-    return color;
-  });
-};
 
-export const updateModeData = (id, data) => {
-  return data.map((mode) => {
-    mode.id === id ? (mode.isModeActive = true) : (mode.isModeActive = false);
-    return mode;
+const updateData = (id,data) => {
+  return data.map((item) => {
+    item.id === id ? (item.isActive = true) : (item.isActive = false);
+    return item;
   });
 }
 
-export const updateFontData = (id,data) => {
-  return data.map((font) => {
-    font.id === id ? (font.isActiveFont = true) : (font.isActiveFont = false);
-    return font;
-  });
-}
-
-
+export default updateData

@@ -3,17 +3,17 @@ const colorData = [
   {
     id: 1,
     name: "Red",
-    isActiveTheme: true,
+    isActive: true,
   },
   {
     id: 2,
     name: "Aqua",
-    isActiveTheme: false,
+    isActive: false,
   },
   {
     id: 3,
     name: "Purple",
-    isActiveTheme: false,
+    isActive: false,
   },
 ];
 

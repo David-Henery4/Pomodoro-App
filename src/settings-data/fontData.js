@@ -2,28 +2,28 @@ const fontData = [
   {
     id: 1,
     fontName: "kumbh",
-    isActiveFont: true,
+    isActive: true,
   },
   {
     id: 2,
     fontName: "slab",
-    isActiveFont: false,
+    isActive: false,
   },
   {
     id: 3,
     fontName: "space",
-    isActiveFont: false,
+    isActive: false,
   },
 ];
 
-const handleFontChange = (fontId) => {
-  fontData.forEach((font) => {
-    if (fontId === font.id) font.isActiveFont = true;
-    if (fontId !== font.id) font.isActiveFont = false;
-  });
-};
+// const handleFontChange = (fontId) => {
+//   fontData.forEach((font) => {
+//     if (fontId === font.id) font.isActiveFont = true;
+//     if (fontId !== font.id) font.isActiveFont = false;
+//   });
+// };
 
 export {
   fontData,
-  handleFontChange
+  // handleFontChange
 }

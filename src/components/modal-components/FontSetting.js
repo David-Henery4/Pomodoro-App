@@ -13,8 +13,8 @@ export const FontSetting = () => {
             <div
               key={font.id}
               className={`${
-                font.isActiveFont && "bg-darkBlue text-baseWhite"
-              } ${font.isActiveFont || "bg-lightGrey text-lighterBlue"}  font-${
+                font.isActive && "bg-darkBlue text-baseWhite"
+              } ${font.isActive || "bg-lightGrey text-lighterBlue"}  font-${
                 font.fontName
               } rounded-full w-10 h-10  grid place-items-center hover:cursor-pointer`}
               onClick={() => {

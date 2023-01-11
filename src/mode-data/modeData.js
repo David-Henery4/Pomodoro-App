@@ -2,17 +2,17 @@ const modeData = [
   {
     id: 1,
     mode: "pomodoro",
-    isModeActive: true,
+    isActive: true,
   },
   {
     id: 2,
     mode: "short break",
-    isModeActive: false,
+    isActive: false,
   },
   {
     id: 3,
     mode: "long break",
-    isModeActive: false,
+    isActive: false,
   },
 ];
 

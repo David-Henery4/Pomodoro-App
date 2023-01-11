@@ -18,7 +18,7 @@ const ColorSettings = () => {
                 setNewTheme({id: color.id, name: color.name})
               }}
             >
-              {color.isActiveTheme && <TickIcon />}
+              {color.isActive && <TickIcon />}
             </div>
           );
         })}

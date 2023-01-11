@@ -12,7 +12,7 @@ const StateSelection = () => {
           <button
             key={mode.id}
             className={`${
-              mode.isModeActive && `bg-primary${activeTheme.name} text-lighterBlue`
+              mode.isActive && `bg-primary${activeTheme.name} text-lighterBlue`
             } h-full w-full rounded-[26px] text-darkGrey`}
             onClick={() => {
               handleChangeMode(mode.id)

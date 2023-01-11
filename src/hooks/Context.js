@@ -2,8 +2,7 @@ import { useState, useContext, createContext } from "react";
 import { modeData } from "../mode-data/modeData";
 import { colorData } from "../settings-data/colorData";
 import { fontData } from "../settings-data/fontData";
-import { updateThemeData, updateModeData } from "../functions";
-import { updateFontData } from "../functions/changeFunction";
+import updateData from "../functions/changeFunction";
 
 const AppContext = createContext();
 
@@ -19,33 +18,22 @@ const AppProvider = ({ children }) => {
   const [newTheme, setNewTheme] = useState({});
   //
   const handleChangeMode = (id) => {
-    const newModeData = updateModeData(id,modeData)
+    const newModeData = updateData(id,modeData)
     setMode(newModeData);
   };
   //
   const handleChangeColor= (id) => {
-    const newColorData = updateThemeData(id,colorData)
+    const newColorData = updateData(id,colorData)
     setThemeData(newColorData)
   }
   const handleChangeFont = (id) => {
-    const newFontData = updateFontData(id, fontData)
+    const newFontData = updateData(id, fontData)
     setFont(newFontData)
   }
   //
   const resetWhenNotConfirmed = () => {
-    // NEED TO ADD RESET TO FONT
-    const backToUnapplied = colorData.map((color) => {
-      color.id === activeTheme.id
-        ? (color.isActiveTheme = true)
-        : (color.isActiveTheme = false);
-      return color
-    })
-    const backToUnappliedFont = fontData.map((font) => {
-      font.id === activeFont.id
-        ? (font.isActiveFont = true)
-        : (font.isActiveFont = false);
-      return font
-    })
+    const backToUnapplied = updateData(activeTheme.id,colorData);
+    const backToUnappliedFont = updateData(activeFont.id,fontData);
     setThemeData(backToUnapplied)
     setFont(backToUnappliedFont)
   };
