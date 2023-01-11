@@ -14,4 +14,11 @@ export const updateModeData = (id, data) => {
   });
 }
 
+export const updateFontData = (id,data) => {
+  return data.map((font) => {
+    font.id === id ? (font.isActiveFont = true) : (font.isActiveFont = false);
+    return font;
+  });
+}
+
 
