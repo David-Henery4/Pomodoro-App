@@ -3,8 +3,7 @@ import { useGlobalContext } from "./hooks/Context";
 import {StateSelection, Timer, SettingsBtn, SettingsModal, Overlay} from "./components"
 
 function App() {
-  const {activeFont, handleApplyChanges} = useGlobalContext()
-  // const [activeFont, setActiveFont] = useState(["kumbh", "slab", "space"]);
+  const {activeFont} = useGlobalContext()
   const [isSettingsModalOpen,setIsSettingsModalOpen] = useState(false)
   //
   return (

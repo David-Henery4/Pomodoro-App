@@ -7,6 +7,8 @@ import updateData from "../functions/changeFunction";
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
+  const [] = useState()
+  //
   const [mode, setMode] = useState(modeData);
   const [themeData,setThemeData] = useState(colorData)
   const [font,setFont] = useState(fontData)

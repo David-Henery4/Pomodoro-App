@@ -1,6 +1,8 @@
 import React from 'react'
+import { useGlobalContext } from '../hooks/Context';
 
 const Timer = () => {
+  const {} = useGlobalContext()
   return (
     <div className="pt-12 pb-[79px]">
       <div className="w-[300px] h-[300px] rounded-full bg-gradient-to-br from-timerBaseColourTwo to-timerBaseColourOne shadow-mainTimer grid place-items-center">
