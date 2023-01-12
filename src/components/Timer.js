@@ -5,12 +5,12 @@ const Timer = () => {
   // start,restart,pause
   const [hasTimerStarted, setHasTimerStarted] = useState(false);
   const [isTimerActive, setIsTimerActive] = useState(false);
-  const [isTimerPaused, setIsTimerPaused] = useState(false);
-  // const [isTimerCompleted, setIsTimerCompleted] = useState(false);
+  // const [isTimerPaused, setIsTimerPaused] = useState(false);
+  const [isTimerCompleted, setIsTimerCompleted] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
   //
   const [defaultSecs, setDefaultSecs] = useState(0);
-  const { activeMode, handleMinsChange, handleTimerEnd } = useGlobalContext();
+  const { activeMode, handleMinsChange, resetMins } = useGlobalContext();
   //
   const handleCountdown = () => {
     if (activeMode.timerMins >= 0) {
@@ -28,12 +28,13 @@ const Timer = () => {
     if (hasTimerStarted) {
       const Id = setInterval(handleCountdown, 1000);
       setIntervalId(Id);
-      if (activeMode.timerMins < 0) {
+      if (activeMode.timerMins === 0 && defaultSecs === 0) {
         console.log("stop");
         clearInterval(intervalId);
         setHasTimerStarted(!hasTimerStarted);
         setIsTimerActive(!isTimerActive);
-        setIsTimerPaused(!isTimerPaused);
+        setIsTimerCompleted(true)
+        // setIsTimerPaused(!isTimerPaused)
       }
       //
       return () => clearInterval(Id);
@@ -48,18 +49,37 @@ const Timer = () => {
             {`${activeMode.timerMins}`.padStart(2, 0)}:
             {`${defaultSecs}`.padStart(2, 0)}
           </p>
-          <button
-            className="text-sm tracking-thirdHeading uppercase self-start"
-            onClick={() => {
-              // handleCountdown();
-              setHasTimerStarted(!hasTimerStarted);
-              setIsTimerActive(!isTimerActive);
-              setIsTimerPaused(!isTimerPaused);
-            }}
-          >
-            {hasTimerStarted || isTimerPaused || "Start"}
-            {isTimerActive && "Paused"}
-          </button>
+          {isTimerCompleted || (
+            <button
+              className="text-sm tracking-thirdHeading uppercase self-start"
+              onClick={() => {
+                // handleCountdown();
+                setHasTimerStarted(!hasTimerStarted);
+                setIsTimerActive(!isTimerActive);
+                setIsTimerCompleted(false);
+                // setIsTimerPaused(!isTimerPaused);
+              }}
+            >
+              {hasTimerStarted || "Start"}
+              {isTimerActive && "Pause"}
+            </button>
+          )}
+          {isTimerCompleted && (
+            <button
+              className="text-sm tracking-thirdHeading uppercase self-start"
+              onClick={() => {
+                // handleCountdown();
+                setDefaultSecs(0)
+                resetMins(activeMode.id)
+                setHasTimerStarted(!hasTimerStarted);
+                setIsTimerActive(!isTimerActive);
+                setIsTimerCompleted(false)
+                // setIsTimerPaused(!isTimerPaused);
+              }}
+            >
+              restart
+            </button>
+          )}
         </div>
       </div>
     </div>

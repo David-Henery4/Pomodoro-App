@@ -16,35 +16,35 @@ const AppProvider = ({ children }) => {
   });
   //
   const [mode, setMode] = useState(modeData);
-  const [themeData,setThemeData] = useState(colorData)
-  const [font,setFont] = useState(fontData)
+  const [themeData, setThemeData] = useState(colorData);
+  const [font, setFont] = useState(fontData);
   //
-  const [activeFont, setActiveFont] = useState({id: 1,name:"kumbh"});
+  const [activeFont, setActiveFont] = useState({ id: 1, name: "kumbh" });
   const [newFont, setNewFont] = useState({});
   //
-  const [activeTheme, setActiveTheme] = useState({id: 1,name: "Red"});
+  const [activeTheme, setActiveTheme] = useState({ id: 1, name: "Red" });
   const [newTheme, setNewTheme] = useState({});
   //
   const handleChangeMode = (id) => {
-    const newModeData = updateData(id,modeData)
+    const newModeData = updateData(id, modeData);
     setMode(newModeData);
-    setActiveMode(modeData.find(item => item.id === id))
+    setActiveMode(modeData.find((item) => item.id === id));
   };
   //
-  const handleChangeColor= (id) => {
-    const newColorData = updateData(id,colorData)
-    setThemeData(newColorData)
-  }
+  const handleChangeColor = (id) => {
+    const newColorData = updateData(id, colorData);
+    setThemeData(newColorData);
+  };
   const handleChangeFont = (id) => {
-    const newFontData = updateData(id, fontData)
-    setFont(newFontData)
-  }
+    const newFontData = updateData(id, fontData);
+    setFont(newFontData);
+  };
   //
   const resetWhenNotConfirmed = () => {
-    const backToUnapplied = updateData(activeTheme.id,colorData);
-    const backToUnappliedFont = updateData(activeFont.id,fontData);
-    setThemeData(backToUnapplied)
-    setFont(backToUnappliedFont)
+    const backToUnapplied = updateData(activeTheme.id, colorData);
+    const backToUnappliedFont = updateData(activeFont.id, fontData);
+    setThemeData(backToUnapplied);
+    setFont(backToUnappliedFont);
   };
   //
   const setNewSettings = () => {
@@ -53,18 +53,11 @@ const AppProvider = ({ children }) => {
   };
   //
   const handleMinsChange = (id) => {
-    const updatedTimerData = modeData.map(item => {
-      if (item.id === id){
-        item.timerMins = item.timerMins - 1
-      }
-      return item;
-    })
-    setMode(updatedTimerData);
-    setActiveMode(updatedTimerData.find((item) => item.id === id));
-  }
+    setActiveMode({ ...activeMode, timerMins: activeMode.timerMins - 1 });
+  };
   //
-  const handleTimerEnd = (id) => {
-    setActiveMode(modeData.find(item => item.id === id).timerMins = 0)
+  const resetMins = (id) => {
+    setActiveMode(modeData.find((item) => item.id === id));
   }
   //
   return (
@@ -86,7 +79,7 @@ const AppProvider = ({ children }) => {
         font,
         activeMode,
         handleMinsChange,
-        handleTimerEnd
+        resetMins,
       }}
     >
       {children}
