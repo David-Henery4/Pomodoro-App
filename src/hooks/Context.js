@@ -16,6 +16,8 @@ const AppProvider = ({ children }) => {
   });
   //
   const [mode, setMode] = useState(modeData);
+  const [preAppliedMode, setPreAppliedMode] = useState(modeData);
+  //
   const [themeData, setThemeData] = useState(colorData);
   const [font, setFont] = useState(fontData);
   //
@@ -26,9 +28,9 @@ const AppProvider = ({ children }) => {
   const [newTheme, setNewTheme] = useState({});
   //
   const handleChangeMode = (id) => {
-    const newModeData = updateData(id, modeData);
+    const newModeData = updateData(id, mode);
     setMode(newModeData);
-    setActiveMode(modeData.find((item) => item.id === id));
+    setActiveMode(mode.find((item) => item.id === id));
   };
   //
   const handleChangeColor = (id) => {
@@ -45,11 +47,14 @@ const AppProvider = ({ children }) => {
     const backToUnappliedFont = updateData(activeFont.id, fontData);
     setThemeData(backToUnapplied);
     setFont(backToUnappliedFont);
+    setPreAppliedMode(mode)
   };
   //
   const setNewSettings = () => {
     setActiveFont(newFont);
     setActiveTheme(newTheme);
+    setMode(preAppliedMode)
+    setActiveMode(preAppliedMode.find(item => item.id === activeMode.id))
   };
   //
   const handleMinsChange = (id) => {
@@ -58,7 +63,21 @@ const AppProvider = ({ children }) => {
   //
   const resetMins = (id) => {
     setActiveMode(modeData.find((item) => item.id === id));
-  }
+  };
+  //
+  const handleChangeMinsSettings = (id, type) => {
+    const newArray = JSON.parse(JSON.stringify(preAppliedMode))
+    const newMinsChanges = newArray.map((item) => {
+      if (item.id === id && type === "INC") {
+        item.timerMins = item.timerMins + 1;
+      }
+      if (item.id === id && type === "DEC") {
+        item.timerMins = item.timerMins -1 ;
+      }
+      return item;
+    });
+    setPreAppliedMode(newMinsChanges)
+  };
   //
   return (
     <AppContext.Provider
@@ -80,6 +99,8 @@ const AppProvider = ({ children }) => {
         activeMode,
         handleMinsChange,
         resetMins,
+        preAppliedMode,
+        handleChangeMinsSettings,
       }}
     >
       {children}
