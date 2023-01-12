@@ -2,17 +2,17 @@
 const colorData = [
   {
     id: 1,
-    name: "Red",
+    name: "bg-primaryRed",
     isActive: true,
   },
   {
     id: 2,
-    name: "Aqua",
+    name: "bg-primaryAqua",
     isActive: false,
   },
   {
     id: 3,
-    name: "Purple",
+    name: "bg-primaryPurple",
     isActive: false,
   },
 ];

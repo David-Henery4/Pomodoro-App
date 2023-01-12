@@ -2,44 +2,32 @@ import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../hooks/Context";
 
 const Timer = () => {
-  // start,restart,pause
   const [hasTimerStarted, setHasTimerStarted] = useState(false);
   const [isTimerActive, setIsTimerActive] = useState(false);
-  // const [isTimerPaused, setIsTimerPaused] = useState(false);
   const [isTimerCompleted, setIsTimerCompleted] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
   //
   const [defaultSecs, setDefaultSecs] = useState(0);
-  const { activeMode, handleMinsChange, resetMins } = useGlobalContext();
-  //
+  const { activeMode, handleTimeChange, resetMinsAndSecs } = useGlobalContext();
+  // activeMode.timerSecs
   const handleCountdown = () => {
-    if (activeMode.timerMins >= 0) {
-      setDefaultSecs((oldValue) => {
-        return oldValue - 1;
-      });
-    }
-    if (defaultSecs === 0) {
-      setDefaultSecs(59);
-      handleMinsChange(activeMode.id);
-    }
+    handleTimeChange()
   };
   //
   useEffect(() => {
     if (hasTimerStarted) {
       const Id = setInterval(handleCountdown, 1000);
       setIntervalId(Id);
-      if (activeMode.timerMins === 0 && defaultSecs === 0) {
-        console.log("stop");
+      if (activeMode.timerMins === 0 && activeMode.timerSecs === 0) {
         clearInterval(intervalId);
         setHasTimerStarted(!hasTimerStarted);
         setIsTimerActive(!isTimerActive);
-        setIsTimerCompleted(true)
-        // setIsTimerPaused(!isTimerPaused)
+        setIsTimerCompleted(true);
       }
       //
       return () => clearInterval(Id);
     }
-  }, [defaultSecs, activeMode.timerMins, hasTimerStarted]);
+  }, [activeMode.timerSecs, activeMode.timerMins, hasTimerStarted]);
   //
   return (
     <div className="pt-12 pb-[79px]">
@@ -47,17 +35,15 @@ const Timer = () => {
         <div className="bg-darkBlue rounded-full h-[89.3%] w-[89.3%] grid place-items-center items-end">
           <p className="text-[80px]">
             {`${activeMode.timerMins}`.padStart(2, 0)}:
-            {`${defaultSecs}`.padStart(2, 0)}
+            {`${activeMode.timerSecs}`.padStart(2, 0)}
           </p>
           {isTimerCompleted || (
             <button
               className="text-sm tracking-thirdHeading uppercase self-start"
               onClick={() => {
-                // handleCountdown();
                 setHasTimerStarted(!hasTimerStarted);
                 setIsTimerActive(!isTimerActive);
                 setIsTimerCompleted(false);
-                // setIsTimerPaused(!isTimerPaused);
               }}
             >
               {hasTimerStarted || "Start"}
@@ -68,13 +54,11 @@ const Timer = () => {
             <button
               className="text-sm tracking-thirdHeading uppercase self-start"
               onClick={() => {
-                // handleCountdown();
-                setDefaultSecs(0)
-                resetMins(activeMode.id)
+                // setDefaultSecs(0);
+                resetMinsAndSecs(activeMode.id);
                 setHasTimerStarted(!hasTimerStarted);
                 setIsTimerActive(!isTimerActive);
-                setIsTimerCompleted(false)
-                // setIsTimerPaused(!isTimerPaused);
+                setIsTimerCompleted(false);
               }}
             >
               restart

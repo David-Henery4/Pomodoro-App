@@ -1,17 +1,17 @@
 const fontData = [
   {
     id: 1,
-    fontName: "kumbh",
+    fontName: "font-kumbh",
     isActive: true,
   },
   {
     id: 2,
-    fontName: "slab",
+    fontName: "font-slab",
     isActive: false,
   },
   {
     id: 3,
-    fontName: "space",
+    fontName: "font-space",
     isActive: false,
   },
 ];

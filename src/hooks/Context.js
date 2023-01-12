@@ -21,10 +21,13 @@ const AppProvider = ({ children }) => {
   const [themeData, setThemeData] = useState(colorData);
   const [font, setFont] = useState(fontData);
   //
-  const [activeFont, setActiveFont] = useState({ id: 1, name: "kumbh" });
+  const [activeFont, setActiveFont] = useState({ id: 1, name: "font-kumbh" });
   const [newFont, setNewFont] = useState({});
   //
-  const [activeTheme, setActiveTheme] = useState({ id: 1, name: "Red" });
+  const [activeTheme, setActiveTheme] = useState({
+    id: 1,
+    name: "bg-primaryRed",
+  });
   const [newTheme, setNewTheme] = useState({});
   //
   const handleChangeMode = (id) => {
@@ -47,36 +50,49 @@ const AppProvider = ({ children }) => {
     const backToUnappliedFont = updateData(activeFont.id, fontData);
     setThemeData(backToUnapplied);
     setFont(backToUnappliedFont);
-    setPreAppliedMode(mode)
+    setPreAppliedMode(mode);
   };
   //
   const setNewSettings = () => {
-    setActiveFont(newFont);
-    setActiveTheme(newTheme);
-    setMode(preAppliedMode)
-    setActiveMode(preAppliedMode.find(item => item.id === activeMode.id))
+    if (Object.entries(newFont).length > 1) {
+      setActiveFont(newFont);
+    }
+    if (Object.entries(newTheme).length > 1) {
+      setActiveTheme(newTheme);
+    }
+    setMode(preAppliedMode);
+    setActiveMode(preAppliedMode.find((item) => item.id === activeMode.id));
   };
   //
-  const handleMinsChange = (id) => {
-    setActiveMode({ ...activeMode, timerMins: activeMode.timerMins - 1 });
+  const handleTimeChange = () => {
+    if (activeMode.timerMins >= 0) {
+      setActiveMode({ ...activeMode, timerSecs: activeMode.timerSecs - 1 });
+    }
+    if (activeMode.timerSecs <= 0) {
+      setActiveMode({
+        ...activeMode,
+        timerMins: activeMode.timerMins - 1,
+        timerSecs: 59,
+      });
+    }
   };
   //
-  const resetMins = (id) => {
-    setActiveMode(modeData.find((item) => item.id === id));
+  const resetMinsAndSecs = (id) => {
+    setActiveMode(mode.find((item) => item.id === id));
   };
   //
   const handleChangeMinsSettings = (id, type) => {
-    const newArray = JSON.parse(JSON.stringify(preAppliedMode))
+    const newArray = JSON.parse(JSON.stringify(preAppliedMode));
     const newMinsChanges = newArray.map((item) => {
       if (item.id === id && type === "INC") {
         item.timerMins = item.timerMins + 1;
       }
       if (item.id === id && type === "DEC") {
-        item.timerMins = item.timerMins -1 ;
+        item.timerMins = item.timerMins - 1;
       }
       return item;
     });
-    setPreAppliedMode(newMinsChanges)
+    setPreAppliedMode(newMinsChanges);
   };
   //
   return (
@@ -97,8 +113,8 @@ const AppProvider = ({ children }) => {
         handleChangeFont,
         font,
         activeMode,
-        handleMinsChange,
-        resetMins,
+        handleTimeChange,
+        resetMinsAndSecs,
         preAppliedMode,
         handleChangeMinsSettings,
       }}

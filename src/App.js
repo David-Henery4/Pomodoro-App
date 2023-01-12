@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGlobalContext } from "./hooks/Context";
 import {StateSelection, Timer, SettingsBtn, SettingsModal, Overlay} from "./components"
 
@@ -6,8 +6,9 @@ function App() {
   const {activeFont} = useGlobalContext()
   const [isSettingsModalOpen,setIsSettingsModalOpen] = useState(false)
   //
+  //
   return (
-    <div className={`App font-${activeFont.name} font-bold text-darkGrey w-full h-screen bg-lighterBlue`}>
+    <div className={`App ${activeFont.name} font-bold text-darkGrey w-full h-screen bg-lighterBlue`}>
       <Overlay isSettingsModalOpen={isSettingsModalOpen} setIsSettingsModalOpen={setIsSettingsModalOpen}/>
       <SettingsModal isSettingsModalOpen={isSettingsModalOpen} setIsSettingsModalOpen={setIsSettingsModalOpen}/>
       <main className="w-full flex flex-col items-center pt-8 gap-[39px]">
