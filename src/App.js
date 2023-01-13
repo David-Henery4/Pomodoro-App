@@ -8,10 +8,10 @@ function App() {
   //
   //
   return (
-    <div className={`App ${activeFont.name} font-bold text-darkGrey w-full h-screen bg-lighterBlue`}>
+    <div className={`App ${activeFont.name} font-bold text-darkGrey w-full min-h-screen bg-lighterBlue`}>
       <Overlay isSettingsModalOpen={isSettingsModalOpen} setIsSettingsModalOpen={setIsSettingsModalOpen}/>
       <SettingsModal isSettingsModalOpen={isSettingsModalOpen} setIsSettingsModalOpen={setIsSettingsModalOpen}/>
-      <main className="w-full flex flex-col items-center pt-8 gap-[39px]">
+      <main className="w-full flex flex-col items-center pt-8 gap-[39px] smlTab:pb-[103px]">
         <h1 className="text-2xl">pomodoro</h1>
         {/* CONTENT */}
         <section className="w-full flex flex-col items-center px-6">

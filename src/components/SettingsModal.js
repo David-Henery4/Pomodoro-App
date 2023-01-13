@@ -13,7 +13,7 @@ const SettingsModal = ({ isSettingsModalOpen, setIsSettingsModalOpen }) => {
   //
   return (
     <div
-      className={`max-w-[540px] rounded-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-darkBlue bg-baseWhite w-11/12 ${
+      className={`max-w-[540px] rounded-2xl absolute top-1/2 left-1/2 -translate-x-1/2 z-50 -translate-y-1/2 text-darkBlue bg-baseWhite w-11/12 ${
         isSettingsModalOpen ? "block" : "hidden"
       }`}
     >

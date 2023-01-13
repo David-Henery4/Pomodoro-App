@@ -1,13 +1,8 @@
 import React from "react";
-import { useState } from "react";
 import { useGlobalContext } from "../../hooks/Context";
-import {Pomodoro,LongBreak,ShortBreak} from "./time-settings-components";
+import {Pomodoro} from "./time-settings-components";
 
 const TimeSettings = () => {
-  const [pomodoroMins, setPomodoroMins] = useState(25);
-  const [shortBreakMins, setShortBreakMins] = useState(5);
-  const [longBreakMins, setLongBreakMins] = useState(15);
-  //
   const { preAppliedMode, handleChangeMinsSettings } = useGlobalContext();
   //
   return (
