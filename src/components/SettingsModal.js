@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { useGlobalContext } from "../hooks/Context";
 import {
   ModalHeader,
@@ -9,7 +8,7 @@ import {
 } from "./modal-components";
 
 const SettingsModal = ({ isSettingsModalOpen, setIsSettingsModalOpen }) => {
-  const { setNewSettings } = useGlobalContext();
+  const { setNewSettings, setKey } = useGlobalContext();
   //
   return (
     <div
@@ -31,6 +30,7 @@ const SettingsModal = ({ isSettingsModalOpen, setIsSettingsModalOpen }) => {
         onClick={() => {
           setNewSettings();
           setIsSettingsModalOpen(false);
+          setKey(prevKey => prevKey + 1)
         }}
       >
         Apply

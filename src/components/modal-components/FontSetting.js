@@ -19,7 +19,7 @@ export const FontSetting = () => {
               } rounded-full w-10 h-10  grid place-items-center hover:cursor-pointer`}
               onClick={() => {
                 handleChangeFont(font.id);
-                setNewFont({ id: font.id, name: font.fontName });
+                setNewFont({ id: font.id, name: font.fontName, letterSpacing: font.letterSpacing });
               }}
             >
               <p>Aa</p>

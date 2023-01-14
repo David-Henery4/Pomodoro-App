@@ -15,7 +15,7 @@ const ColorSettings = () => {
               className={`hover:cursor-pointer ${color.name} w-10 h-10 grid place-items-center font-kumbh rounded-full`}
               onClick={() => {
                 handleChangeColor(color.id)
-                setNewTheme({id: color.id, name: color.name})
+                setNewTheme({id: color.id, name: color.name, hex: color.hex})
               }}
             >
               {color.isActive && <TickIcon />}

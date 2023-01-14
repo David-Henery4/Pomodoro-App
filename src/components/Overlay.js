@@ -5,7 +5,7 @@ const Overlay = ({ isSettingsModalOpen, setIsSettingsModalOpen }) => {
     <div
       className={`${
         isSettingsModalOpen ? "block" : "hidden"
-      } absolute left-0 top-0 w-full h-full bg-overlayColor/50`}
+      } fixed left-0 top-0 w-full h-full bg-overlayColor/50`}
       onClick={() => {
         setIsSettingsModalOpen(false)
       }}

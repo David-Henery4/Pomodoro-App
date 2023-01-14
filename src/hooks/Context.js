@@ -15,18 +15,25 @@ const AppProvider = ({ children }) => {
     timerSecs: 0,
   });
   //
+  const [key, setKey] = useState(0);
+  //
   const [mode, setMode] = useState(modeData);
   const [preAppliedMode, setPreAppliedMode] = useState(modeData);
   //
   const [themeData, setThemeData] = useState(colorData);
   const [font, setFont] = useState(fontData);
   //
-  const [activeFont, setActiveFont] = useState({ id: 1, name: "font-kumbh" });
+  const [activeFont, setActiveFont] = useState({
+    id: 1,
+    name: "font-kumbh",
+    letterSpacing: "-tracking-[4px]",
+  });
   const [newFont, setNewFont] = useState({});
   //
   const [activeTheme, setActiveTheme] = useState({
     id: 1,
     name: "bg-primaryRed",
+    hex: "#F87070",
   });
   const [newTheme, setNewTheme] = useState({});
   //
@@ -117,6 +124,8 @@ const AppProvider = ({ children }) => {
         resetMinsAndSecs,
         preAppliedMode,
         handleChangeMinsSettings,
+        key,
+        setKey
       }}
     >
       {children}
