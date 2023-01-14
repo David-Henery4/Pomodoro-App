@@ -61,3 +61,27 @@ const LoadingBar = (props) => {
 };
 
 export default LoadingBar;
+
+
+  // activeMode.timerMins > 0 ? activeMode.timerMins * 600 : 600; // 3 seconds
+  // const [loading, setLoading] = useState(true);
+  // const [progress, setProgress] = useState(0);
+  // const loadingDuration = ((mode[activeMode.id - 1].timerMins * 60) * 1000);
+      // ? activeMode.timerMins * (mode[activeMode.id - 1].timerMins * 60)
+      // : mode[activeMode.id - 1].timerMins * 600; // 3 seconds
+  // console.log(mode[activeMode.id - 1].timerMins * 600)
+  // useEffect(() => {
+  //   if (hasTimerStarted) {
+  //     let loadingTimeout = setTimeout(() => {
+  //       if (loading >= 100) return;
+  //       setProgress(progress + 1);
+  //     }, loadingDuration / 100);
+  //     if (progress === 100) {
+  //       setLoading(false);
+  //     }
+  //     return () => {
+  //       clearTimeout(loadingTimeout);
+  //     };
+  //   }
+  // }, [progress, loading, hasTimerStarted]);
+  //***************************************************************//

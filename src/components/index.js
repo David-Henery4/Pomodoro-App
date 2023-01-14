@@ -4,6 +4,8 @@ import SettingsBtn from "./SettingsBtn";
 import SettingsModal from "./SettingsModal";
 import Overlay from "./Overlay";
 import LoadingBar from "./LoadingBar.js/LoadingBar";
+import ProgressBar from "./LoadingBar.js/ProgressBar";
+import CircleProgress from "./LoadingBar.js/CircleProgress";
 
 export {
   StateSelection,
@@ -11,5 +13,7 @@ export {
   SettingsBtn,
   SettingsModal,
   Overlay,
-  LoadingBar
+  LoadingBar,
+  ProgressBar,
+  CircleProgress,
 }
