@@ -19,14 +19,6 @@ const fontData = [
   },
 ];
 
-// const handleFontChange = (fontId) => {
-//   fontData.forEach((font) => {
-//     if (fontId === font.id) font.isActiveFont = true;
-//     if (fontId !== font.id) font.isActiveFont = false;
-//   });
-// };
-
 export {
   fontData,
-  // handleFontChange
 }

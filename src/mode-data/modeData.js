@@ -3,7 +3,7 @@ const modeData = [
     id: 1,
     mode: "pomodoro",
     isActive: true,
-    timerMins: 1,
+    timerMins: 25,
     timerSecs: 0
   },
   {
@@ -21,10 +21,6 @@ const modeData = [
     timerSecs: 0
   },
 ];
-
-// const handleSelectingActiveMode = (id) => {
-//   modeData.forEach(mode => mode.id === id ? mode.isModeActive = true: mode.isModeActive = false)
-// }
 
 export{
   modeData,

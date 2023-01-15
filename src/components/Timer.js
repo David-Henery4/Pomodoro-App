@@ -24,10 +24,10 @@ const Timer = () => {
   };
   //
   useEffect(() => {
-    setKey((prevKey) => prevKey + 1)
-    setHasTimerStarted(false)
-    setIsTimerActive(false)
-  },[mode])
+    setKey((prevKey) => prevKey + 1);
+    setHasTimerStarted(false);
+    setIsTimerActive(false);
+  }, [mode]);
   //
   useEffect(() => {
     if (hasTimerStarted) {
@@ -44,13 +44,21 @@ const Timer = () => {
       return () => clearInterval(Id);
     }
   }, [activeMode.timerSecs, activeMode.timerMins, hasTimerStarted]);
-  //***********************************************************//
+  //
   return (
     <div className="pt-12 pb-[79px] smlTab:pt-[45px] smlTab:pb-[63px]">
       <div className="w-[300px] h-[300px] rounded-full bg-gradient-to-br from-timerBaseColourTwo to-timerBaseColourOne shadow-mainTimer grid place-items-center smlTab:w-[410px] smlTab:h-[410px]">
         <div className="bg-darkBlue rounded-full h-[89.3%] w-[89.3%] grid place-items-center items-end relative">
-          <CircleProgress time={{mode, activeMode}} hasTimerStarted={hasTimerStarted} activeTheme={activeTheme} setKey={setKey} keyValue={key}/>
-          <p className={`text-[80px] ${activeFont.letterSpacing} smlTab:text-[100px]`}>
+          <CircleProgress
+            time={{ mode, activeMode }}
+            hasTimerStarted={hasTimerStarted}
+            activeTheme={activeTheme}
+            setKey={setKey}
+            keyValue={key}
+          />
+          <p
+            className={`text-[80px] ${activeFont.letterSpacing} smlTab:text-[100px]`}
+          >
             {`${activeMode.timerMins}`.padStart(2, 0)}:
             {`${activeMode.timerSecs}`.padStart(2, 0)}
           </p>

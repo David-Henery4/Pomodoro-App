@@ -1,4 +1,4 @@
-import { useState, useContext, createContext, useEffect } from "react";
+import { useState, useContext, createContext } from "react";
 import { modeData } from "../mode-data/modeData";
 import { colorData } from "../settings-data/colorData";
 import { fontData } from "../settings-data/fontData";
@@ -11,7 +11,7 @@ const AppProvider = ({ children }) => {
     id: 1,
     mode: "pomodoro",
     isActive: true,
-    timerMins: 1,
+    timerMins: 25,
     timerSecs: 0,
   });
   //
@@ -105,28 +105,11 @@ const AppProvider = ({ children }) => {
         decrementedValue <= 0
           ? (item.timerMins = 1)
           : (item.timerMins = decrementedValue);
-        // item.timerMins = item.timerMins - 1;
       }
       return item;
     });
     setPreAppliedMode(newMinsChanges);
   };
-  //
-  // const setMinsMaxMin = () => {
-  //   preAppliedMode.map(item => {
-  //     if (item.timerMins <= 0){
-  //       item.timerMins = 1
-  //     }
-  //     if (item.timerMins >= 100){
-  //       item.timerMins = 99
-  //     }
-  //     return item
-  //   })
-  // }
-  //
-  // useEffect(() => {
-  //   setMinsMaxMin()
-  // },[preAppliedMode])
   //
   return (
     <AppContext.Provider
