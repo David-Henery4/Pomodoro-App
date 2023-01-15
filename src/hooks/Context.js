@@ -1,4 +1,4 @@
-import { useState, useContext, createContext } from "react";
+import { useState, useContext, createContext, useEffect } from "react";
 import { modeData } from "../mode-data/modeData";
 import { colorData } from "../settings-data/colorData";
 import { fontData } from "../settings-data/fontData";
@@ -88,19 +88,45 @@ const AppProvider = ({ children }) => {
     setActiveMode(mode.find((item) => item.id === id));
   };
   //
-  const handleChangeMinsSettings = (id, type) => {
+  const handleChangeMinsSettings = (id, type, minsValue) => {
     const newArray = JSON.parse(JSON.stringify(preAppliedMode));
     const newMinsChanges = newArray.map((item) => {
+      if (item.id === id && type === "NEW") {
+        item.timerMins = minsValue;
+      }
       if (item.id === id && type === "INC") {
-        item.timerMins = item.timerMins + 1;
+        const incrementedValue = item.timerMins + 1;
+        incrementedValue >= 100
+          ? (item.timerMins = 99)
+          : (item.timerMins = incrementedValue);
       }
       if (item.id === id && type === "DEC") {
-        item.timerMins = item.timerMins - 1;
+        const decrementedValue = item.timerMins - 1;
+        decrementedValue <= 0
+          ? (item.timerMins = 1)
+          : (item.timerMins = decrementedValue);
+        // item.timerMins = item.timerMins - 1;
       }
       return item;
     });
     setPreAppliedMode(newMinsChanges);
   };
+  //
+  // const setMinsMaxMin = () => {
+  //   preAppliedMode.map(item => {
+  //     if (item.timerMins <= 0){
+  //       item.timerMins = 1
+  //     }
+  //     if (item.timerMins >= 100){
+  //       item.timerMins = 99
+  //     }
+  //     return item
+  //   })
+  // }
+  //
+  // useEffect(() => {
+  //   setMinsMaxMin()
+  // },[preAppliedMode])
   //
   return (
     <AppContext.Provider
@@ -125,7 +151,7 @@ const AppProvider = ({ children }) => {
         preAppliedMode,
         handleChangeMinsSettings,
         key,
-        setKey
+        setKey,
       }}
     >
       {children}
